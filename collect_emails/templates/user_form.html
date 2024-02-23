@@ -1,0 +1,182 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="Humanity First Foundation"/>
+    <meta name="descrption" content="Our motive is "/>
+    <title>Humanity First Foundation</title>
+    <link rel="icon" href="{%static "/humanity-icon.ico"%}" type="image/png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+        }
+
+        .background-container {
+            position: relative;
+            width: 100%;
+            height: 100vh; /* Set height to full viewport height */
+            overflow: hidden; /* Ensure the background image doesn't extend beyond viewport */
+        }
+
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Send the background image to the back */
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8); /* Adjust opacity as needed */
+            z-index: 0; /* Set z-index to be below content */
+        }
+
+        .container {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            z-index: 1; /* Ensure content appears above the overlay */
+        }
+
+        h1 {
+            font-size: 50px;
+            border: 10px solid white;
+            padding: 10px;
+        }
+
+        h2 {
+            font-size: 40px;
+        }
+
+        h3 {
+            font-size: 25px;
+        }
+
+        .logo {
+            height: 90px;
+            border: none;
+            border-radius: 10px;
+        }
+
+        form {
+            position: relative;
+            margin-top: 20px;
+            z-index: 2; /* Ensure the form appears above the background */
+        }
+
+        .labels {
+            display: block;
+            margin-bottom: 5px;
+            color: #fff;
+            text-align: left; /* Align labels to the left */
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus {
+            outline: none; /* Remove default focus outline */
+            border-color: #007bff; /* Change border color on focus */
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a box shadow on focus */
+        }
+
+        button[type="submit"] {
+            background-color: transparent;
+            color: #fff;
+            padding: 10px 20px;
+            border: 2px solid white;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            width: 100%;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #fff;
+            color: black;
+        }
+
+        .line-text {
+            display: flex;
+            align-items: center;
+        }
+
+        .line {
+            flex-grow: 1;
+            height: 1px;
+            background-color: white;
+            margin: 0 10px;
+        }
+
+        @media only screen and (max-width: 400px) {
+            h1 {
+                font-size: 30px; /* Decrease font size for h1 on smaller screens */
+            }
+        
+            h2 {
+                font-size: 35px; /* Decrease font size for h2 on smaller screens */
+            }
+        
+            h3 {
+                font-size: 20px; /* Decrease font size for h3 on smaller screens */
+            }
+
+            .logo{
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="background-container">
+    <img class="background-image" src="{%static "/donations.jpg"%}" alt="Background Image" />
+    <div class="overlay"></div>
+    <div class="container">
+        <img class="logo" src="{%static "/humanity-logo.jpeg"%}" alt="Logo" />
+        <h1>Humanity First Foundation</h1>
+        <h2>Together, we can make a difference.</h2>
+        <h3>
+            <div class="line-text">
+                <div class="line"></div>
+                Donate With Us
+                <div class="line"></div>
+            </div>
+        </h3>
+        <form method="post">
+            {% csrf_token %}
+            <label class="labels" for="id_name">Name:</label>
+            {{ form.name }}
+            <label class="labels" for="id_email">Email:</label>
+            {{ form.email }}
+            <label class="labels" for="id_phone_number">Phone Number:</label>
+            {{ form.phone_number }}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/735d26de-57f2-4129-8f1c-9ad6af464dd6/resourceGroups/appsvc_linux_centralus_basic/providers/Microsoft.Web/sites/humanityfirst",
+    "appService.deploySubpath": "."
+}
