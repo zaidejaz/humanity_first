@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'fih*_1^+e-j-!fo4^n^v$(y$e*^w6#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'humanityfirst.up.railway.app']
 
 
 # Application definition
@@ -113,6 +113,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    }
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
@@ -131,16 +139,15 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-# CRSF_TRUSTED_ORIGINS = ["127.0.0.1"]
-# SESSION_COOKIE_SECURE = True
-# SECURE_SSL_REDIRECT = True
-# CSRF_COOKIE_SECURE = True
-# SECURE_HSTS_SECONDS = 31536000
-# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-# SECURE_HSTS_PRELOAD = True
+CRSF_TRUSTED_ORIGINS = ["127.0.0.1", "humanityfirst.up.railway.app"]
+SESSION_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
+CSRF_COOKIE_SECURE = True
+SECURE_HSTS_SECONDS = 31536000
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
